@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Object Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quantityInputs = document.querySelectorAll('.cart-page tbody input[type="number"]');
+        const removeButtons = document.querySelectorAll('.cart-page tbody a');
+        const itemPrices = {
+            1: 45.00, // Price of Elegant Sculpture (assuming ID 1)
+            2: 75.00  // Price of Vintage Camera (assuming ID 2)
+        };
+        const subtotalCell = document.querySelector('.cart-page tfoot .subtotal-value');
+        const totalAmountCell = document.querySelector('.cart-page .total-amount strong');
+        const cartTableBody = document.querySelector('.cart-page tbody');
+        const emptyCartDiv = document.querySelector('.cart-page .empty-cart');
+        const cartForm = document.getElementById('cartForm');
+        const checkoutButton = document.querySelector('.checkout-button'); // Select the checkout button
+
+        const shippingCost = 10.00;
+
+        function updateTotals() {
+            let subtotal = 0;
+            let itemCount = 0;
+            const cartData = {};
+
+            quantityInputs.forEach(input => {
+                const itemId = parseInt(input.name.replace('quantity[', '').replace(']', ''));
+                const quantity = parseInt(input.value);
+                const price = itemPrices[itemId] || 0;
+                const row = input.closest('tr');
+                const itemTotalCell = row.querySelector('td:nth-child(4)');
+
+                if (itemTotalCell) {
+                    const itemTotal = quantity * price;
+                    itemTotalCell.textContent = `$${itemTotal.toFixed(2)}`;
+                    subtotal += itemTotal;
+                    itemCount += quantity;
+                    cartData[itemId] = quantity;
+                }
+            });
+
+            subtotalCell.textContent = `$${subtotal.toFixed(2)}`;
+            const totalAmount = subtotal + shippingCost;
+            totalAmountCell.textContent = `$${totalAmount.toFixed(2)}`;
+
+            const cartLink = document.querySelector('header nav ul li:last-child a');
+            if (cartLink) {
+                cartLink.textContent = `Cart (${itemCount})`;
+            }
+
+            if (cartTableBody.children.length === 0) {
+                emptyCartDiv.style.display = 'block';
+            } else {
+                emptyCartDiv.style.display = 'none';
+            }
+
+            // Store cart data and total in localStorage
+            localStorage.setItem('cartTotal', totalAmount.toFixed(2));
+            localStorage.setItem('cartItems', JSON.stringify(cartData)); //store cart items
+        }
+
+        quantityInputs.forEach(input => {
+            input.addEventListener('change', updateTotals);
+        });
+
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const rowToRemove = this.closest('tr');
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                    quantityInputs = document.querySelectorAll('.cart-page tbody input[type="number"]');
+                    updateTotals();
+                }
+            });
+        });
+
+        updateTotals();
+
+        const updateCartButton = document.querySelector('button[name="update_cart"]');
+        if (updateCartButton) {
+            updateCartButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                updateTotals();
+                alert('Cart totals updated (frontend only).');
+            });
+        }
+
+        // Checkout button event listener to handle redirection (and saving to local storage)
+        if (checkoutButton) {
+            checkoutButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                updateTotals(); //update totals
+                window.location.href = 'checkout.html'; // Redirect to checkout
+            });
+        }
+    });
+</script>
+
+    <style>
+        .total-amount {
+            margin-top: 1em;
+            text-align: right;
+            font-size: 1.2em;
+        }
+        .total-amount strong {
+            font-weight: bold;
+            color: var(--accent-blue); /* Use your accent color */
+        }
+        .cart-page tbody a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .cart-page tbody a:hover {
+            text-decoration: underline;
+            color: var(--accent-hover); /* Use your accent hover color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Object Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart (2)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="cart-page">
+        <h1>Your Shopping Cart</h1>
+
+        <form id="cartForm" action="checkout.html" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elegant Sculpture</td>
+                        <td>$45.00</td>
+                        <td>
+                            <input type="number" name="quantity[1]" value="1" min="1">
+                        </td>
+                        <td>$45.00</td>
+                        <td><a href="#">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td>Vintage Camera</td>
+                        <td>$75.00</td>
+                        <td>
+                            <input type="number" name="quantity[2]" value="1" min="1">
+                        </td>
+                        <td>$75.00</td>
+                        <td><a href="#">Remove</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Subtotal:</strong></td>
+                        <td class="subtotal-value">$120.00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="total-amount">
+                            Shipping: $10.00<br>
+                            <strong>Total Amount: $130.00</strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="actions">
+                            <button type="submit" name="update_cart">Update Cart</button>
+                            <button type="submit" class="checkout-button">Proceed to Checkout</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <input type="hidden" id="cartData" name="cartData" value="">
+        </form>
+
+        <div class="empty-cart" style="display: none;">
+            <p>Your cart is empty.</p>
+            <p><a href="index.html">Browse Objects</a></p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Object Haven</p>
+    </footer>
+</body>
+</html>

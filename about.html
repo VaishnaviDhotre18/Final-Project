@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Object Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #343a40; /* Dark Grey Background (same as footer) */
+            color: #f8f9fa; /* Light Grey Text for better contrast on dark bg */
+        }
+
+        header {
+            background-color: #28a745; /* Green Header */
+            color: white;
+            padding: 1em 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        main.about-content {
+            padding: 30px;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #212529; /* Slightly lighter dark grey for main content */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.7;
+            color: #ced4da; /* Lighter grey text for main content */
+        }
+
+        main.about-content h2 {
+            margin-top: 25px;
+            color: #28a745; /* Green Heading */
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        main.about-content p {
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        .green-computing {
+            margin-top: 2em;
+            padding: 20px;
+            border: 1px solid #aed581; /* Light Green Border */
+            background-color: #1e2125; /* Even lighter dark grey for green section */
+            border-radius: 8px;
+        }
+
+        .green-computing h3 {
+            color: #558b2f; /* Darker Green Heading */
+            margin-bottom: 0.7em;
+            font-size: 1.3em;
+        }
+
+        .green-computing p {
+            color: #aed581; /* Light Green Text for Green Computing */
+            font-size: 0.95em;
+            margin-bottom: 1.2em;
+        }
+
+        .green-computing ul {
+            padding-left: 25px;
+            margin-bottom: 1.5em;
+        }
+
+        .green-computing ul li {
+            color: #aed581; /* Light Green Text for List Items */
+            font-size: 0.95em;
+            margin-bottom: 0.8em;
+            list-style-type: disc;
+        }
+
+        footer {
+            background-color: #343a40; /* Dark Grey Footer */
+            color: #f8f9fa; /* Light Grey Footer Text */
+            text-align: center;
+            padding: 1.5em 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #aed581; /* Light Green Link in Footer */
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ccff90; /* Brighter Light Green on Hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Object Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="about-content">
+        <section id="green-computing" class="green-computing">
+            <h3>Our Green Computing Approach</h3>
+            <p>At Object Haven, we are committed to implementing green computing principles in the development and maintenance of our website:</p>
+            <ul>
+                <li><strong>Efficient Code:</strong> Our website is built with clean, well-structured, and optimized HTML, CSS, and JavaScript to minimize file sizes and processing requirements.</li>
+                <li><strong>Optimized Images and Media:</strong> We strive to use appropriately sized and compressed images and media to reduce bandwidth usage and loading times.</li>
+                <li><strong>Caching Strategies:</strong> We implement browser and server-side caching to reduce the need to reload resources, decreasing server load and energy consumption.</li>
+                <li><strong>Content Delivery Network (CDN) (Future Consideration):</strong> Exploring the use of a CDN to distribute content efficiently from servers closer to users, reducing latency and server strain.</li>
+                <li><strong>Energy-Efficient Hosting:</strong> We prioritize web hosting providers that utilize energy-efficient data centers and ideally renewable energy sources.</li>
+                <li><strong>Resource Monitoring and Optimization:</strong> We continuously monitor our website's performance to identify and address areas for optimization and improved resource utilization.</li>
+                <li><strong>Progressive Enhancement:</strong> Building our website with a focus on core functionality first, then enhancing with advanced features only when necessary, reducing the initial load and complexity for all users.</li>
+            </ul>
+            <p>By focusing on these green computing practices, we aim to create a fast, efficient, and environmentally conscious online platform.</p>
+        </section>
+
+        <h2>About Object Haven</h2>
+        <p>Thank you for being a part of the Object Haven community. We are dedicated to bringing you a curated collection of unique and interesting items.</p>
+        <p>Our passion lies in connecting you with objects that inspire and enrich your life. We carefully select each item, ensuring quality and character.</p>
+        <p>We believe in providing a seamless and enjoyable online shopping experience, and we are constantly striving to improve our platform and services.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Object Haven</p>
+    </footer>
+</body>
+</html>

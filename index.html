@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+	header .logo {
+        font-size: 1.5em;
+        color: yellow; /* Initial yellow color */
+        font-weight: bold;
+        text-decoration: none;
+        position: relative; /* For positioning the sparkles */
+        overflow: visible; /* Allow sparkles to go outside the logo bounds */
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    header .logo:hover {
+        transform: scale(1.1);
+        color: yellow; /* Keep yellow on hover */
+    }
+
+    /* Create individual sparkle elements */
+    .sparkle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        pointer-events: none;
+    }
+
+    header .logo:hover .sparkle {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Position the individual sparkles */
+    header .logo .sparkle:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        transition-delay: 0.05s;
+    }
+
+    header .logo .sparkle:nth-child(2) {
+        top: 20%;
+        right: 15%;
+        transition-delay: 0.1s;
+    }
+
+    header .logo .sparkle:nth-child(3) {
+        bottom: 15%;
+        left: 25%;
+        transition-delay: 0.15s;
+    }
+
+    header .logo .sparkle:nth-child(4) {
+        top: 5%;
+        right: 30%;
+        transition-delay: 0.2s;
+    }
+
+    header .logo .sparkle:nth-child(5) {
+        bottom: 10%;
+        right: 10%;
+        transition-delay: 0.25s;
+    }
+
+        /* Basic banner styling */
+        .banner {
+            width: 90%;
+            min-height: 300px; /* Adjust as needed */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Default text color for banners */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 8px; /* Optional: Add a background to the text for better readability */
+        }
+
+        .banner-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .banner-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .banner-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .banner-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the add to cart popup (existing) */
+        .add-to-cart-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-popup h2 {
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-popup p {
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-popup button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-to-cart-popup button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Object Haven
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+    </a></div>
+    <nav>
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html">Cart(1)</a></li>
+			<li><a href="https://9000-idx-gsd-promt-1744687635025.cluster-nzwlpk54dvagsxetkvxzbvslyi.cloudworkstations.dev/?embedded=0&monospaceUid=150398">Ai-Suggetion</a></li>
+
+        </ul>
+    </nav>
+</header>
+    <main>
+        <section class="hero">
+            <div class="slider-container">
+                <div class="slide active" style="background-image: url('img/banner1.webp')">
+                    <div class="hero-content">
+                        <h1>Discover Unique Objects</h1>
+                        <p>Explore our curated collection of interesting items.</p>
+                        <a href="objects.html" class="button">Browse All</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('img/banner2.webp')">
+                    <div class="hero-content">
+                        <h2>New Arrivals are Here!</h2>
+                        <p>Check out our latest additions.</p>
+                        <a href="objects.html" class="button">See New Arrivals</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-slide">Previous</button>
+                <button class="next-slide">Next</button>
+            </div>
+        </section>
+
+        <section class="banner" style="background-image: url('banner_collections.webp');">
+            <div class="banner-content">
+                <h2>Explore Our Special Collections</h2>
+                <p>Discover themed selections of our most fascinating objects.</p>
+                <a href="objects.html" class="banner-button">View Collections</a>
+            </div>
+        </section>
+
+        <section class="featured-objects">
+            <h2>Featured Objects</h2>
+            <div class="object-grid">
+                <div class="object-card">
+                    <img src="img/object1.webp" alt="Elegant Sculpture">
+                    <h3>Elegant Sculpture</h3>
+                    <p>$45.00</p>
+                    <form class="add-to-cart-form" action="add_to_cart.php" method="post">
+                        <input type="hidden" name="product_id" value="1">
+                        <label for="quantity_1">Qty:</label>
+                        <input type="number" id="quantity_1" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="1" data-product-name="Elegant Sculpture">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="object-card">
+                    <img src="img/object2.webp" alt="Vintage Camera">
+                    <h3>Vintage Camera</h3>
+                    <p>$75.00</p>
+                    <form class="add-to-cart-form" action="add_to_cart.php" method="post">
+                        <input type="hidden" name="product_id" value="2">
+                        <label for="quantity_2">Qty:</label>
+                        <input type="number" id="quantity_2" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="2" data-product-name="Vintage Camera">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="banner" style="background-image: url('img/banner_offers.webp'); color: #333; background-color: #f0f0f0;">
+            <div class="banner-content">
+                <h2>Limited Time Offers</h2>
+                <p>Don't miss out on our exclusive deals and discounts!</p>
+                <a href="objects.html" class="banner-button" style="background-color: #ff6f00;">Shop Now</a>
+            </div>
+        </section>
+
+        <section class="banner" style="background-image: url('img/banner_community.webp'); min-height: 400px;">
+            <div class="banner-content">
+                <h2>Join the Object Haven Community</h2>
+                <p>Stay updated on new arrivals, special events, and more.</p>
+                <form>
+                    <input type="email" placeholder="Your Email Address" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-right: 10px;">
+                    <button type="submit" class="banner-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Object Haven</p>
+        <p>&copy; 2025 Object Haven - Implementing Green Computing Principles</p>
+        <p>Our website is designed for optimal performance and energy efficiency.</p>
+        <p>We prioritize clean code and efficient resource utilization.</p>
+        <p><a href="about.html#green-computing" style="color: #55a630; text-decoration: underline;">Learn more about our Green Computing Approach</a></p>
+    </footer>
+
+    <div id="addToCartPopup" class="add-to-cart-popup">
+        <h2>Added to Cart!</h2>
+        <p><span id="popup-product-name"></span> has been added to your cart.</p>
+        <button onclick="closeAddToCartPopup()">View Cart</button>
+        <button onclick="closeAddToCartPopup()">Continue Shopping</button>
+    </div>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        const addToCartPopup = document.getElementById('addToCartPopup');
+        const popupProductName = document.getElementById('popup-product-name');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.dataset.productId;
+                const productName = this.dataset.productName;
+                const form = this.closest('.add-to-cart-form');
+                const quantityInput = form.querySelector('input[name="quantity"]');
+                const quantity = quantityInput.value;
+
+                // Simulate adding to cart (in a real scenario, you'd use AJAX)
+                console.log(`Adding product ID ${productId}, ${productName}, Quantity: ${quantity} to cart.`);
+
+                popupProductName.textContent = productName;
+                addToCartPopup.style.display = 'block';
+            });
+        });
+
+        function closeAddToCartPopup() {
+            addToCartPopup.style.display = 'none';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

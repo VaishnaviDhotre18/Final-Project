@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Sculpture - Object Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product_details.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Object Haven</div>
+        <nav>
+            <ul>
+                <li><a href="objects.html">Objects</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="cart.html">Cart (2)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="product-details-page">
+        <div class="product-image">
+            <img src="img/Object1.webp" alt="Elegant Sculpture">
+        </div>
+        <div class="product-info">
+            <h1>Elegant Sculpture</h1>
+            <p class="price">$45.00</p>
+            <div class="description">
+                <p>This elegant sculpture is a beautiful addition to any home or office. Handcrafted with care, it showcases intricate details and a timeless design.</p>
+                <p>Material: Ceramic</p>
+                <p>Dimensions: 12 inches tall</p>
+            </div>
+            <div class="add-to-cart">
+                <form id="addToCartForm" action="add_to_cart.php" method="post">
+                    <input type="hidden" name="product_id" value="1">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <button type="button" class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                </form>
+            </div>
+            <a href="index.html" class="back-to-objects">Back to Objects</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Object Haven</p>
+    </footer>
+    <div class="cart-feedback"></div>
+    <script src="script.js"></script>
+</body>
+</html>

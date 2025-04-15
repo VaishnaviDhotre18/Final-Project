@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Objects - Object Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .more-objects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .more-object-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .more-object-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .more-object-card h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .more-object-card p {
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .more-object-card form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .more-object-card label {
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+
+        .more-object-card input[type="number"] {
+            width: 40px; /* Smaller quantity box */
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .more-object-card button.add-to-cart-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .more-object-card button.add-to-cart-btn:hover {
+            background-color: #0056b3;
+        }
+.more-objects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .more-object-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        display: flex; /* Enable flexbox for content alignment */
+        flex-direction: column; /* Stack content vertically */
+    }
+
+    .more-object-card img {
+        max-width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 10px;
+    }
+
+    .more-object-card h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-size: 1.2em;
+    }
+
+    .more-object-card p {
+        margin-bottom: 10px;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .more-object-card form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto; /* Push form to the bottom */
+        margin-bottom: 10px;
+    }
+
+    .more-object-card label {
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+
+    .more-object-card input[type="number"] {
+        width: 40px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    .more-object-card button.add-to-cart-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin-left: 10px;
+    }
+
+    .more-object-card button.add-to-cart-btn:hover {
+        background-color: #0056b3;
+    }
+        /* Style for the add to cart popup (existing) */
+        .add-to-cart-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-popup h2 {
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-popup p {
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-popup button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-to-cart-popup button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Object Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart(1)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="more-objects">
+            <h2>More Objects For Sale</h2>
+            <div class="more-objects-grid">
+                <div class="more-object-card">
+                    <img src="img/object3.webp" alt="Antique Book">
+                    <h3>Antique Book</h3>
+                    <p>$30.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="3">
+                        <label for="quantity_3">Qty:</label>
+                        <input type="number" id="quantity_3" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="3" data-product-name="Antique Book">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object4.webp" alt="Porcelain Doll">
+                    <h3>Porcelain Doll</h3>
+                    <p>$55.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="4">
+                        <label for="quantity_4">Qty:</label>
+                        <input type="number" id="quantity_4" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="4" data-product-name="Porcelain Doll">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object5.webp" alt="Brass Telescope">
+                    <h3>Brass Telescope</h3>
+                    <p>$120.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="5">
+                        <label for="quantity_5">Qty:</label>
+                        <input type="number" id="quantity_5" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="5" data-product-name="Brass Telescope">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object6.webp" alt="Silver Locket">
+                    <h3>Silver Locket</h3>
+                    <p>$85.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="6">
+                        <label for="quantity_6">Qty:</label>
+                        <input type="number" id="quantity_6" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="6" data-product-name="Silver Locket">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object7.webp" alt="Wooden Chess Set">
+                    <h3>Wooden Chess Set</h3>
+                    <p>$70.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="7">
+                        <label for="quantity_7">Qty:</label>
+                        <input type="number" id="quantity_7" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="7" data-product-name="Wooden Chess Set">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object8.webp" alt="Globe Lamp">
+                    <h3>Globe Lamp</h3>
+                    <p>$95.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="8">
+                        <label for="quantity_8">Qty:</label>
+                        <input type="number" id="quantity_8" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="8" data-product-name="Globe Lamp">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object9.webp" alt="Vintage Postcards">
+                    <h3>Vintage Postcards</h3>
+                    <p>$25.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="9">
+                        <label for="quantity_9">Qty:</label>
+                        <input type="number" id="quantity_9" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="9" data-product-name="Vintage Postcards">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object10.webp" alt="Stone Sculpture">
+                    <h3>Stone Sculpture</h3>
+                    <p>$150.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="10">
+                        <label for="quantity_10">Qty:</label>
+                        <input type="number" id="quantity_10" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="10" data-product-name="Stone Sculpture">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object11.webp" alt="Ceramic Vase">
+                    <h3>Ceramic Vase</h3>
+                    <p>$60.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="11">
+                        <label for="quantity_11">Qty:</label>
+                        <input type="number" id="quantity_11" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="11" data-product-name="Ceramic Vase">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object12.webp" alt="Pocket Watch">
+                    <h3>Pocket Watch</h3>
+                    <p>$110.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="12">
+                        <label for="quantity_12">Qty:</label>
+                        <input type="number" id="quantity_12" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="12" data-product-name="Pocket Watch">Add to Cart</button>
+                    </form>
+                </div>
+                 <div class="more-object-card">
+                    <img src="img/object13.webp" alt="Retro Radio">
+                    <h3>Retro Radio</h3>
+                    <p>$78.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="13">
+                        <label for="quantity_13">Qty:</label>
+                        <input type="number" id="quantity_13" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="13" data-product-name="Retro Radio">Add to Cart</button>
+                    </form>
+                </div>
+                <div class="more-object-card">
+                    <img src="img/object14.webp" alt="World Map Poster">
+                    <h3>World Map Poster</h3>
+                    <p>$20.00</p>
+                    <form class="add-to-cart-form">
+                        <input type="hidden" name="product_id" value="14">
+                        <label for="quantity_14">Qty:</label>
+                        <input type="number" id="quantity_14" name="quantity" value="1" min="1">
+                        <button type="button" class="add-to-cart-btn" data-product-id="14" data-product-name="World Map Poster">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Object Haven</p>
+        <p>&copy; 2025 Object Haven - Committed to Sustainable Practices</p>
+        <p>We strive to minimize our environmental impact through efficient website design and hosting.</p>
+    </footer>
+
+    <div id="addToCartPopup" class="add-to-cart-popup">
+        <h2>Added to Cart!</h2>
+        <p><span id="popup-product-name"></span> has been added to your cart.</p>
+        <button onclick="closeAddToCartPopup()">View Cart</button>
+        <button onclick="closeAddToCartPopup()">Continue Shopping</button>
+    </div>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        const addToCartPopup = document.getElementById('addToCartPopup');
+        const popupProductName = document.getElementById('popup-product-name');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.dataset.productId;
+                const productName = this.dataset.productName;
+                const form = this.closest('.add-to-cart-form');
+                const quantityInput = form.querySelector('input[name="quantity"]');
+                const quantity = quantityInput.value;
+
+                // Simulate adding to cart (in a real scenario, you'd use AJAX)
+                console.log(`Adding product ID ${productId}, ${productName}, Quantity: ${quantity} to cart.`);
+
+                popupProductName.textContent = productName;
+                addToCartPopup.style.display = 'block';
+            });
+        });
+
+        function closeAddToCartPopup() {
+            addToCartPopup.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
